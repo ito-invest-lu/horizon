@@ -6,6 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-03-14 13:08+0000\n"
+"PO-Revision-Date: 2024-03-14 13:08+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -54,8 +56,12 @@ msgid "* Pas de seconde session possible pour cette activité."
 msgstr ""
 
 #. module: school_evaluations
-#: model_terms:ir.ui.view,arch_db:school_evaluations.individual_program_eval_form
-msgid "--&gt;"
+#: model_terms:ir.ui.view,arch_db:school_evaluations.report_success_certificate_content
+#: model_terms:ir.ui.view,arch_db:school_evaluations.report_success_certificate_prog_content
+msgid ""
+"<br/>\n"
+"                                  <br/>\n"
+"                                  A réussi en l’année académique"
 msgstr ""
 
 #. module: school_evaluations
@@ -63,24 +69,15 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:school_evaluations.report_success_certificate_prog_content
 msgid ""
 "<br/>\n"
-"                                <br/>\n"
-"                                A réussi en l’année académique"
-msgstr ""
-
-#. module: school_evaluations
-#: model_terms:ir.ui.view,arch_db:school_evaluations.report_success_certificate_content
-#: model_terms:ir.ui.view,arch_db:school_evaluations.report_success_certificate_prog_content
-msgid ""
-"<br/>\n"
-"                                <br/>\n"
-"                                Né"
+"                                  <br/>\n"
+"                                  Né"
 msgstr ""
 
 #. module: school_evaluations
 #: model_terms:ir.ui.view,arch_db:school_evaluations.report_success_certificate_content
 msgid ""
 "<br/>\n"
-"                                son programme en"
+"                                  son programme en"
 msgstr ""
 
 #. module: school_evaluations
@@ -161,11 +158,6 @@ msgstr ""
 #. module: school_evaluations
 #: model_terms:ir.ui.view,arch_db:school_evaluations.individual_program_eval_form
 msgid "Abandoned"
-msgstr ""
-
-#. module: school_evaluations
-#: model_terms:ir.ui.view,arch_db:school_evaluations.view_individual_program_eval_filter
-msgid "Abandonned"
 msgstr ""
 
 #. module: school_evaluations
@@ -252,7 +244,6 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:school_evaluations.individual_bloc_eval_form
 #: model_terms:ir.ui.view,arch_db:school_evaluations.individual_program_eval_form
 #: model_terms:ir.ui.view,arch_db:school_evaluations.view_individual_bloc_filter_eval
-#: model_terms:ir.ui.view,arch_db:school_evaluations.view_individual_program_eval_filter
 msgid "Awarded"
 msgstr ""
 
@@ -482,7 +473,6 @@ msgstr ""
 #. module: school_evaluations
 #: model:ir.model.fields.selection,name:school_evaluations.selection__school_individual_course_summary__state__9_draft
 #: model_terms:ir.ui.view,arch_db:school_evaluations.view_individual_bloc_filter_eval
-#: model_terms:ir.ui.view,arch_db:school_evaluations.view_individual_program_eval_filter
 msgid "Draft"
 msgstr ""
 
@@ -566,7 +556,6 @@ msgid "Evaluation Summary Wizard"
 msgstr ""
 
 #. module: school_evaluations
-#: model:ir.actions.report,name:school_evaluations.report_evaluation_by_teacher
 #: model:ir.ui.menu,name:school_evaluations.menu_evaluation_report_by_teacher
 msgid "Evaluation by Teacher"
 msgstr ""
@@ -744,6 +733,7 @@ msgid "Generate"
 msgstr ""
 
 #. module: school_evaluations
+#: model:ir.ui.menu,name:school_evaluations.school_home_menu_students_evaluations
 #: model:res.groups,name:school_evaluations.group_evaluations
 msgid "Gestion des évaluations"
 msgstr ""
@@ -894,7 +884,7 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:school_evaluations.report_success_certificate_content
 #: model_terms:ir.ui.view,arch_db:school_evaluations.report_success_certificate_prog_content
 msgid ""
-"Je, sousigné, NATHANAËL HARCQ, Directeur du Conservatoire Royal de Liège, "
+"Je soussigné, NATHANAËL HARCQ, Directeur du Conservatoire Royal de Liège, "
 "certifie que"
 msgstr ""
 
@@ -1126,6 +1116,16 @@ msgid "Partial Result"
 msgstr ""
 
 #. module: school_evaluations
+#: model_terms:ir.ui.view,arch_db:school_evaluations.view_individual_course_groups_grades_filter
+msgid "Pas de notes encodée"
+msgstr ""
+
+#. module: school_evaluations
+#: model_terms:ir.ui.view,arch_db:school_evaluations.view_individual_course_grades_filter
+msgid "Pas de notes encodées"
+msgstr ""
+
+#. module: school_evaluations
 #: model_terms:ir.actions.act_window,help:school_evaluations.action_individual_course_form
 #: model_terms:ir.actions.act_window,help:school_evaluations.action_individual_course_form_teacher
 msgid "Please add individual program from Student view."
@@ -1170,7 +1170,6 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:school_evaluations.individual_bloc_eval_form
 #: model_terms:ir.ui.view,arch_db:school_evaluations.individual_course_group_eval_form
 #: model_terms:ir.ui.view,arch_db:school_evaluations.individual_program_eval_form
-#: model_terms:ir.ui.view,arch_db:school_evaluations.view_individual_program_eval_filter
 msgid "Progress"
 msgstr ""
 
@@ -1491,7 +1490,7 @@ msgstr ""
 
 #. module: school_evaluations
 #: model_terms:ir.ui.view,arch_db:school_evaluations.report_individual_bloc_definition_content
-msgid "UNITéS D'ENSEIGNEMENT"
+msgid "UNITÉS D'ENSEIGNEMENT"
 msgstr ""
 
 #. module: school_evaluations
@@ -1543,12 +1542,12 @@ msgstr ""
 
 #. module: school_evaluations
 #: model_terms:ir.ui.view,arch_db:school_evaluations.individual_program_eval_form
-msgid "attempts"
+msgid "[Valo]"
 msgstr ""
 
 #. module: school_evaluations
-#: model_terms:ir.ui.view,arch_db:school_evaluations.report_success_certificate_prog_content
-msgid "au motif de"
+#: model_terms:ir.ui.view,arch_db:school_evaluations.individual_program_eval_form
+msgid "attempts"
 msgstr ""
 
 #. module: school_evaluations
@@ -1564,11 +1563,6 @@ msgstr ""
 #. module: school_evaluations
 #: model_terms:ir.ui.view,arch_db:school_evaluations.report_individual_bloc_definition_content
 msgid "de"
-msgstr ""
-
-#. module: school_evaluations
-#: model_terms:ir.ui.view,arch_db:school_evaluations.report_success_certificate_prog_content
-msgid "en"
 msgstr ""
 
 #. module: school_evaluations

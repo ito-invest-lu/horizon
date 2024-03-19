@@ -60,6 +60,12 @@ class PreRequisit(models.Model):
 
     course_id = fields.Many2one("school.course_group", "Course Group")
     preriquisit_id = fields.Many2one("school.course_group", "Prerequisit")
+    name = fields.Char(
+        related="course_id.name", string="Course Group Name", store=False
+    )  # Pour recherche
+    uid = fields.Char(
+        related="course_id.uid", string="Course Group UID", store=False
+    )  # Pour recherche
 
 
 class CoRequisit(models.Model):
@@ -69,3 +75,7 @@ class CoRequisit(models.Model):
 
     course_id = fields.Many2one("school.course_group", "Course Group")
     coriquisit_id = fields.Many2one("school.course_group", "Corequisit")
+    name = fields.Char(
+        related="course_id.name", string="Course Group Name", store=False
+    )  # Pour recherche
+    uid = fields.Char(related="course_id.uid", string="Course Group UID", store=False)

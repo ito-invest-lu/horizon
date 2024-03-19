@@ -211,9 +211,8 @@
                                                 <div
                                                     class="o_kanban_record_title oe_kanban_details"
                                                 >
-                                                    <strong><field
-                                                            name="name"
-                                                        /></strong>
+                                                    <span id="is_valuated" /><strong
+                                                    ><field name="name" /></strong>
                                                 </div>
                                                 <div class="o_kanban_record_subtitle">
                                                     <small><field name="uid" /></small>
@@ -267,11 +266,55 @@
         <field name="model">school.individual_program</field>
         <field name="arch" type="xml">
             <search string="Search Programs">
+                <field name="name" string="Nom du programme de cycle" />
+                <field name="uid" />
                 <field name="student_id" domain="[('type', '=', 'contact')]" />
+                <filter
+                    name="draft"
+                    string="Draft"
+                    domain="[('state', 'in', ['draft'])]"
+                />
+                <filter
+                    name="published"
+                    string="Published"
+                    domain="[('state', 'not in', ['draft'])]"
+                />
                 <filter
                     string="Archived"
                     name="inactive"
                     domain="[('active','=',False)]"
+                />
+                <separator />
+                    <filter
+                    name="progress"
+                    string="Progress"
+                    domain="[('state', 'in', ['progress'])]"
+                />
+                    <filter
+                    name="awarded"
+                    string="Awarded"
+                    domain="[('state', 'in', ['awarded'])]"
+                />
+                    <filter
+                    name="abandoned"
+                    string="Abandonned"
+                    domain="[('state', 'in', ['abandoned'])]"
+                />
+                <separator />
+                <filter
+                    string="Current Year"
+                    name="current"
+                    domain="[('bloc_ids.year_sequence','=','current')]"
+                />
+                <filter
+                    string="Previous Year"
+                    name="previous"
+                    domain="[('bloc_ids.year_sequence','=','previous')]"
+                />
+                <filter
+                    string="Next Year"
+                    name="next"
+                    domain="[('bloc_ids.year_sequence','=','next')]"
                 />
                 <separator />
                 <filter
@@ -281,7 +324,7 @@
                 />
                 <filter
                     name="theatre"
-                    string="Théatre"
+                    string="Théâtre"
                     domain="[('domain_id', '=', 2)]"
                 />
                 <separator />
@@ -322,12 +365,12 @@
     </record>
 
     <record id="action_individual_program_form" model="ir.actions.act_window">
-        <field name="name">Individual Programs</field>
+        <field name="name">Students Invidivdual Cycles</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">school.individual_program</field>
 
         <field name="view_mode">tree,form</field>
-        <field name="context">{}</field>
+        <field name="context">{"search_default_current":1}</field>
         <field name="search_view_id" ref="view_individual_program_filter" />
         <field name="help" type="html">
             <p class="oe_view_nocontent_create">
@@ -452,6 +495,7 @@
         <field name="model">school.individual_course</field>
         <field name="arch" type="xml">
             <search string="Search Courses">
+                <field name="name" />
                 <field name="student_id" domain="[('type', '=', 'contact')]" />
                 <field name="teacher_id" />
                 <field name="bloc_id" />
@@ -500,20 +544,25 @@
                     domain="[('year_sequence','=','current')]"
                 />
                 <filter
-                    string="Next Year"
-                    name="next"
-                    domain="[('year_sequence','=','next')]"
-                />
-                <filter
                     string="Previous Year"
                     name="previous"
                     domain="[('year_sequence','=','previous')]"
+                />
+                <filter
+                    string="Next Year"
+                    name="next"
+                    domain="[('year_sequence','=','next')]"
                 />
                 <separator />
                 <filter
                     name="my_current_courses"
                     string="My Current Courses"
                     domain="[('teacher_id.user_ids','=',uid),('year_sequence','=','current')]"
+                />
+                <filter
+                    name="active"
+                    string="Active"
+                    domain="[('bloc_id.state','!=','abandoned')]"
                 />
                 <group expand="1" string="Group By">
                     <filter
@@ -847,11 +896,23 @@
         <field name="arch" type="xml">
             <search string="Search Blocs">
                 <field name="student_id" domain="[('type', '=', 'contact')]" />
+                <field name="uid" filter_domain="[('uid','ilike',self)]" />
+                <filter
+                    name="draft"
+                    string="Draft"
+                    domain="[('state', 'in', ['draft'])]"
+                />
+                <filter
+                    name="published"
+                    string="Published"
+                    domain="[('state', 'not in', ['draft'])]"
+                />
                 <filter
                     string="Archived"
                     name="inactive"
                     domain="[('active','=',False)]"
                 />
+                <separator />
                 <field name="source_bloc_id" string="Programme" />
                 <field name="source_bloc_domain_id" />
                 <filter
@@ -892,7 +953,7 @@
                 />
                 <filter
                     name="theatre"
-                    string="Théatre"
+                    string="Théâtre"
                     domain="[('source_bloc_domain_id', '=', 2)]"
                 />
                 <separator />
@@ -902,14 +963,14 @@
                     domain="[('year_sequence','=','current')]"
                 />
                 <filter
-                    string="Next Year"
-                    name="next"
-                    domain="[('year_sequence','=','next')]"
-                />
-                <filter
                     string="Previous Year"
                     name="previous"
                     domain="[('year_sequence','=','previous')]"
+                />
+                <filter
+                    string="Next Year"
+                    name="next"
+                    domain="[('year_sequence','=','next')]"
                 />
                 <group expand="1" string="Group By">
                     <filter
@@ -1141,6 +1202,18 @@
                 <field name="uid" string="UID" />
                 <field name="student_id" domain="[('type', '=', 'contact')]" />
                 <field name="source_course_group_id" string="Activité" />
+                <field name="responsible_id" string="Responsable de l'UE" />
+                <filter
+                    name="draft"
+                    string="Draft"
+                    domain="[('state', 'in', ['draft'])]"
+                />
+                <filter
+                    name="published"
+                    string="Published"
+                    domain="[('state', 'not in', ['draft'])]"
+                />
+                <separator />
                 <filter
                     name="bloc_1"
                     string="Bloc 1"
@@ -1178,14 +1251,20 @@
                     domain="[('year_sequence','=','current')]"
                 />
                 <filter
+                    string="Previous Year"
+                    name="previous"
+                    domain="[('year_sequence','=','previous')]"
+                />
+                <filter
                     string="Next Year"
                     name="next"
                     domain="[('year_sequence','=','next')]"
                 />
+                <separator />
                 <filter
-                    string="Previous Year"
-                    name="previous"
-                    domain="[('year_sequence','=','previous')]"
+                    name="no_responsible"
+                    string="Pas de responsable"
+                    domain="[('responsible_id', '=', None)]"
                 />
                 <separator />
                 <group expand="1" string="Group By">
